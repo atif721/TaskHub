@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
