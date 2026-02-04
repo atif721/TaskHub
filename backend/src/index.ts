@@ -1,7 +1,7 @@
 import { Logger } from "@packages/logger";
 import express from "express";
 import { prisma } from '../config/lib/prisma';
-import { corsConfig } from "../cors";
+import { corsConfig } from "../config/cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 

@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/HomePage";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 export function meta({}: Route.MetaArgs) {
