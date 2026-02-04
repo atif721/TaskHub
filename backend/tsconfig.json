@@ -28,6 +28,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "config", "prisma.config.ts"],
+  "include": ["src/**/*", "config", "config/prisma.config.ts", "redisClient.ts", "cors.ts"],
   "exclude": ["node_modules", "dist"]
 }
