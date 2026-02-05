@@ -9,7 +9,7 @@
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
     "db:migrate": "prisma migrate dev --name init --schema=./config/prisma/schema.prisma",
-    "db:generate": "prisma generate --schema=./config/prisma/schema.prisma",
+    "db:generate": "prisma generate --schema=config/prisma/schema.prisma",
     "db:seed": "tsx config/script.ts",
     "db:studio": "prisma studio --schema=config/prisma/schema.prisma",
     "db:push": "prisma db push --schema=config/prisma/schema.prisma",

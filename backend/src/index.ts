@@ -1,7 +1,6 @@
 import { Logger } from "@packages/logger";
 import express from "express";
 import mongoose from 'mongoose';
-// import { prisma } from '../config/libs/prisma';
 import { corsConfig } from "../config/cors";
 import morgan from "morgan";
 import { config } from "../config/env";
