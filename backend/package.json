@@ -10,7 +10,7 @@
     "dev": "tsx watch src/index.ts",
     "db:migrate": "prisma migrate dev --name init --schema=./config/prisma/schema.prisma",
     "db:generate": "prisma generate --schema=./config/prisma/schema.prisma",
-    "db:seed": "tsx config/script.ts",
+    "db:seed": "tsx ./config/script.ts",
     "db:studio": "prisma studio --schema=./config/prisma/schema.prisma",
     "db:push": "prisma db push --schema=./config/prisma/schema.prisma",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +26,7 @@
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.0.10",
     "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
@@ -33,7 +34,6 @@
     "@packages/logger": "workspace:*",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "ioredis": "^5.9.2",
     "jsonwebtoken": "^9.0.3",
