@@ -1,4 +1,9 @@
 packages:
-  - "packages/*"
-  - "frontend"
-  - "backend"
+  - packages/*
+  - frontend
+  - backend
+
+ignoredBuiltDependencies:
+  - '@prisma/engines'
+  - bcrypt
+  - prisma
