@@ -6,6 +6,8 @@ import morgan from "morgan";
 import { config } from "../config/env";
 // import cookieParser from "cookie-parser";
 
+import routes from '../routes/index';
+
 const app = express();
 app.use(
   corsConfig()
@@ -31,6 +33,8 @@ app.get("/", async (req, res, next) => {
   });
   return next();
 });
+
+app.use("/api-v1", routes);
 
 // error middleware
 app.use((req, res, next) => {
