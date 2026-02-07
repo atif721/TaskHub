@@ -1,56 +1,60 @@
 import { Logger } from "@packages/logger";
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import mongoose from 'mongoose';
 import { corsConfig } from "../config/cors";
 import morgan from "morgan";
 import { config } from "../config/env";
-// import cookieParser from "cookie-parser";
 
 import routes from '../routes/index';
 
 const app = express();
-app.use(
-  corsConfig()
-);
 
+// Middlewares
+app.use(corsConfig());
 app.use(morgan("dev"));
+app.use(express.json());
 
+// DB connection
 mongoose
   .connect(config.mongodbUri)
   .then(() => {
-    Logger.info(`DB connected Successfully`);
+    Logger.info("DB connected Successfully");
   })
-  .catch((err) => {
-    console.log("Failed to connect to DB", err);
+  .catch((err: any) => {
+    Logger.error("Failed to connect to DB", err);
   });
 
-app.use(express.json());
-
-app.get("/", async (req, res, next) => {
-  res.send("Hello world");
+// Root route
+app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
     message: "Welcome to TaskHub API"
   });
-  return next();
 });
 
+// API routes
 app.use("/api-v1", routes);
 
-// error middleware
-app.use((req, res, next) => {
-  res.status(500).json({
-    message: "Internal server error"
-  });
-  next();
-});
+// Error-handling middleware
+app.use(
+  (err: any, req: Request, res: Response, next: NextFunction) => {
+    Logger.error(err);
+    if (res.headersSent) {
+      return next(err);
+    }
+    res.status(500).json({
+      message: "Internal server error"
+    });
+  }
+);
 
-// not found middleware
-app.use((req, res) => {
+// 404 Not Found middleware
+app.use((req: Request, res: Response) => {
   res.status(404).json({
     message: "Not Found"
   });
 });
 
+// Start server
 app.listen(config.port, () => {
   Logger.info(`Server running on http://localhost:${config.port}`);
 });
